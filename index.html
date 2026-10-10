@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HavenKey Abuja — Properties for sale and rent in Abuja</title>
+<meta name="description" content="Demonstration real estate website for Abuja: browse illustrative listings, enquire, register as an agent and record transactions. Demonstration by Agbaje Automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#0f2e24;--forest-2:#16402f;--ivory:#f6f1e6;--paper:#fffdf8;--bronze:#a8782f;--bronze-d:#8a6122;--ink:#1d2a24;--mute:#5d6a62;--line:#ddd5c1;--bad:#a12626;--ok:#1f6b45;--warn:#8a5a12;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--r:6px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font:16px/1.55 var(--sans);-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;margin:0 0 .5em;color:var(--forest)}
+h1{font-size:clamp(2.3rem,6.2vw,4.4rem);letter-spacing:-.015em}h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}h3{font-size:1.3rem}
+p{margin:0 0 1em}a{color:var(--forest-2)}
+:focus-visible{outline:3px solid var(--bronze);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;background:var(--forest);color:#fff;padding:.6rem 1rem;z-index:100}.skip:focus{left:0}
+.wrap{width:min(1160px,100% - 2rem);margin-inline:auto}
+header.site{background:var(--forest);color:var(--ivory);position:sticky;top:0;z-index:50}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px}
+.brand{font-family:var(--serif);font-size:1.45rem;color:var(--ivory);text-decoration:none;display:flex;align-items:baseline;gap:.5rem}
+.brand small{font:500 .7rem var(--sans);letter-spacing:.14em;color:#d9c08a}
+nav ul{list-style:none;display:flex;gap:.2rem;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--ivory);text-decoration:none;padding:.5rem .65rem;border-radius:var(--r);font-size:.92rem;display:block}
+nav a:hover,nav a[aria-current="page"]{background:rgba(255,255,255,.1)}
+nav a.cta{background:var(--bronze);color:#fff;font-weight:600}nav a.cta:hover{background:var(--bronze-d)}
+.burger{display:none;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:var(--r);padding:.45rem .7rem;font:inherit}
+@media(max-width:980px){.burger{display:block}nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--forest);padding:.5rem 1rem 1rem}nav.open{display:block}nav ul{flex-direction:column}}
+.demo-strip{background:#efe3c3;color:#4a3913;font-size:.82rem;text-align:center;padding:.4rem 1rem}
+main section.view{display:none;padding:2.5rem 0 4rem}main section.view.active{display:block}
+.btn{display:inline-block;border:0;border-radius:var(--r);padding:.8rem 1.25rem;font:600 .98rem var(--sans);cursor:pointer;text-decoration:none;background:var(--forest);color:#fff;min-height:44px}
+.btn:hover{background:var(--forest-2)}.btn.gold{background:var(--bronze)}.btn.gold:hover{background:var(--bronze-d)}
+.btn.ghost{background:transparent;color:var(--forest);border:1.5px solid var(--forest)}.btn.ghost:hover{background:var(--forest);color:#fff}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+.hero{background:var(--forest);color:var(--ivory);padding:3.2rem 0 4.5rem}#v-home.view{padding-top:0}.hero .search{margin-bottom:-7.5rem}.hero+.wrap{padding-top:9rem!important}
+.hero h1{color:var(--ivory);max-width:15ch}.hero p.lead{max-width:56ch;color:#d8d2c0;font-size:1.1rem}
+.hero .plate{display:inline-block;border:1.5px solid #d9c08a;color:#d9c08a;font:500 .78rem var(--sans);letter-spacing:.16em;padding:.3rem .7rem;margin-bottom:1.3rem}
+.search{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1.2rem;margin-top:2rem;box-shadow:0 18px 40px -22px rgba(15,46,36,.55)}
+.fgrid{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+label{display:block;font-size:.84rem;font-weight:600;color:var(--forest);margin-bottom:.25rem}
+input,select,textarea{width:100%;font:inherit;padding:.65rem .7rem;border:1.5px solid #c9c1ac;border-radius:var(--r);background:#fff;color:var(--ink);min-height:44px}
+textarea{min-height:110px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--forest);outline:none;box-shadow:0 0 0 3px rgba(168,120,47,.35)}
+.field.err input,.field.err select,.field.err textarea{border-color:var(--bad)}.field .msg{color:var(--bad);font-size:.8rem;min-height:1em}
+.check{display:flex;gap:.6rem;align-items:flex-start;font-weight:400}.check input{width:auto;min-height:0;margin-top:.3rem}
+.hp{position:absolute;left:-5000px;height:0;overflow:hidden}
+.cats{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:1.5rem}
+.cat{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem;text-align:left;cursor:pointer;font:inherit;color:var(--forest)}
+.cat:hover{border-color:var(--bronze)}.cat b{display:block;font-family:var(--serif);font-size:1.15rem}.cat span{font-size:.85rem;color:var(--mute)}
+.grid{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:#dcd5c0}
+.card .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;padding:.15rem .5rem;border-radius:3px;background:#e9efe9;color:var(--forest)}.tag.rent{background:#efe6cf;color:#6b4c12}.tag.ill{background:#f1ece0;color:#6b6552;font-weight:500}
+.price{font-family:var(--serif);font-size:1.45rem;color:var(--forest)}.price small{font:500 .8rem var(--sans);color:var(--mute)}
+.meta{color:var(--mute);font-size:.88rem}.card .actions{margin-top:auto;display:flex;gap:.5rem;padding-top:.6rem;flex-wrap:wrap}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:1.4rem}
+.two{display:grid;gap:2rem;grid-template-columns:1fr 1fr}@media(max-width:860px){.two{grid-template-columns:1fr}}
+.form-grid{display:grid;gap:.9rem;grid-template-columns:1fr 1fr}.form-grid .full{grid-column:1/-1}@media(max-width:620px){.form-grid{grid-template-columns:1fr}}
+.status{padding:.8rem 1rem;border-radius:var(--r);margin:1rem 0;font-size:.95rem;display:none}
+.status.show{display:block}.status.ok{background:#e4f1e9;color:#144a2f;border:1px solid #b7d8c4}.status.bad{background:#fbe9e7;color:#7d1f1f;border:1px solid #efc2bd}.status.info{background:#f3ecd7;color:#5a4410;border:1px solid #e3d6aa}
+.idbox{border:2px dashed var(--bronze);background:#fbf5e6;padding:1rem 1.2rem;border-radius:8px;margin:1rem 0}.idbox .big{font:600 1.7rem var(--serif);color:var(--forest);letter-spacing:.02em}
+.spin{display:inline-block;width:1em;height:1em;border:2px solid #fff;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-.15em;margin-right:.5rem}@keyframes sp{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.spin{animation:none}html{scroll-behavior:auto}}
+dialog{border:0;border-radius:12px;padding:0;width:min(940px,96vw);max-height:92vh;overflow:auto;background:var(--paper)}
+dialog::backdrop{background:rgba(10,32,25,.6)}
+.dhead{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;background:var(--forest);color:var(--ivory);position:sticky;top:0;z-index:2}
+.dhead button{background:none;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:var(--r);padding:.35rem .8rem;cursor:pointer;font:inherit}
+.dbody{padding:1.3rem}.gal{display:grid;gap:.6rem;grid-template-columns:2fr 1fr}.gal img{width:100%;border-radius:6px;display:block;aspect-ratio:3/2;object-fit:cover}.gal .side{display:grid;gap:.6rem}
+@media(max-width:700px){.gal{grid-template-columns:1fr}.gal .side{grid-template-columns:1fr 1fr}}
+ul.feat{columns:2;padding-left:1.1rem;margin:0 0 1rem}ul.agr{padding-left:1.1rem}
+.agree-box{max-height:340px;overflow:auto;border:1.5px solid #c9c1ac;border-radius:var(--r);padding:1rem;background:#fff}.agree-box h4{margin:1rem 0 .2rem;font-family:var(--serif);color:var(--forest)}
+table.t{width:100%;border-collapse:collapse;font-size:.9rem}table.t th,table.t td{text-align:left;padding:.55rem .5rem;border-bottom:1px solid var(--line)}table.t th{color:var(--forest);font-weight:600}.scroll{overflow-x:auto}
+.bar-row{display:grid;grid-template-columns:130px 1fr 60px;gap:.6rem;align-items:center;margin:.3rem 0;font-size:.88rem}.bar-row i{display:block;height:12px;background:var(--bronze);border-radius:3px}
+.kpis{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:1rem 0}.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:.8rem}.kpi b{display:block;font:500 1.6rem var(--serif);color:var(--forest)}.kpi span{font-size:.8rem;color:var(--mute)}
+footer{background:var(--forest);color:#cfc9b8;padding:2rem 0;font-size:.88rem}footer a{color:#e6d4a6}
+.steps{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:s;padding:0;list-style:none}.steps li{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--bronze);border-radius:var(--r);padding:1rem}
+.note{font-size:.85rem;color:var(--mute)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- =====================================================================
+ CONFIGURATION — the ONLY place webhook URLs live.
+ Paste the PRODUCTION webhook URLs from n8n (not the "test" URLs) after you activate the workflow.
+ Example shape: https://YOUR-N8N-HOST/webhook/estateflow/v1/property-enquiry
+ No API keys, Airtable tokens or Gmail credentials belong in this file.
+ ===================================================================== -->
+<script>
+const HAVENKEY_CONFIG = {
+  webhooks: {
+    enquiry:     "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_property-enquiry",
+    agent:       "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_agent-registration",
+    agreement:   "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_agent-agreement",
+    property:    "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_property-submission",
+    transaction: "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_transaction-submission"
+  },
+  agreementVersion: "DEMO-1.0",          // must equal CURRENT_VERSION in the n8n node "Validate Agreement"
+  requestTimeoutMs: 25000,
+  alternativeContact: { email: "", phone: "" }   // shown on failure when filled in, e.g. the agency's real contact details
+};
+</script>
+
+<header class="site">
+ <div class="wrap bar">
+  <a class="brand" href="#home" data-nav="home">HavenKey <small>ABUJA</small></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+   <ul>
+    <li><a href="#home" data-nav="home">Home</a></li>
+    <li><a href="#properties" data-nav="properties">Properties</a></li>
+    <li><a href="#sale" data-nav="sale">For Sale</a></li>
+    <li><a href="#rent" data-nav="rent">For Rent</a></li>
+    <li><a href="#management" data-nav="management">Property Management</a></li>
+    <li><a href="#agents" data-nav="agents">Agents</a></li>
+    <li><a href="#about" data-nav="about">About</a></li>
+    <li><a href="#contact" data-nav="contact">Contact</a></li>
+    <li><a class="cta" href="#properties" data-nav="properties">Find a Property</a></li>
+   </ul>
+  </nav>
+ </div>
+ <div class="demo-strip">Demonstration website by Agbaje Automation. Property listings, agents and enquiry data are illustrative.</div>
+</header>
+
+<main id="main">
+
+<!-- HOME -->
+<section class="view" id="v-home">
+ <div class="hero"><div class="wrap">
+  <span class="plate">ABUJA · FCT · NIGERIA</span>
+  <h1>Find your next address in Abuja.</h1>
+  <p class="lead">Explore homes, land and commercial space for sale and rent across Maitama, Jabi, Gwarinpa, Guzape and beyond. Found something? Send an enquiry and our team will follow up to arrange a viewing.</p>
+  <form class="search" id="heroSearch" aria-label="Search properties">
+   <div class="fgrid">
+    <div><label for="hTx">I want to</label><select id="hTx"><option value="all">Buy or rent</option><option value="sale">Buy</option><option value="rent">Rent</option><option value="shortlet">Short stay</option></select></div>
+    <div><label for="hType">Property type</label><select id="hType"></select></div>
+    <div><label for="hLoc">Location</label><select id="hLoc"></select></div>
+    <div style="align-self:end"><button class="btn gold" type="submit" style="width:100%">Explore properties</button></div>
+   </div>
+  </form>
+ </div></div>
+ <div class="wrap" style="padding-top:2rem">
+  <h2>Browse by category</h2>
+  <div class="cats" id="catGrid"></div>
+  <h2 style="margin-top:3rem">Featured illustrative listings</h2>
+  <p class="note">All listings are fictional demonstration data and are not available on the real market.</p>
+  <div class="grid" id="featGrid"></div>
+  <h2 style="margin-top:3rem">How an enquiry is handled</h2>
+  <ol class="steps">
+   <li><b>You enquire.</b> Pick a property or send a general question.</li>
+   <li><b>We record it.</b> You get a reference number only once it is safely saved.</li>
+   <li><b>A person follows up.</b> Availability and inspection times are confirmed by our team, never promised automatically.</li>
+  </ol>
+ </div>
+</section>
+
+<!-- PROPERTIES -->
+<section class="view" id="v-properties"><div class="wrap">
+ <h2 id="listTitle">Properties</h2>
+ <form class="search" id="filters" style="margin-top:0" aria-label="Filter properties">
+  <div class="fgrid">
+   <div><label for="fTx">Sale or rent</label><select id="fTx"><option value="all">All</option><option value="sale">For sale</option><option value="rent">For rent</option><option value="shortlet">Short-let</option></select></div>
+   <div><label for="fType">Property type</label><select id="fType"></select></div>
+   <div><label for="fLoc">Location</label><select id="fLoc"></select></div>
+   <div><label for="fMin">Min budget (₦)</label><input id="fMin" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+   <div><label for="fMax">Max budget (₦)</label><input id="fMax" type="number" min="0" inputmode="numeric" placeholder="Any"></div>
+   <div><label for="fBeds">Bedrooms</label><select id="fBeds"><option value="0">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select></div>
+   <div style="align-self:end"><button class="btn ghost" type="button" id="fReset" style="width:100%">Reset</button></div>
+  </div>
+  <p class="note" style="margin:.7rem 0 0">Budget applies to the listed price (rentals: per year, or per night for short-lets). Bedroom filter applies where relevant; land and commercial listings are kept when it is "Any".</p>
+ </form>
+ <p id="resultCount" aria-live="polite" style="margin:1rem 0"></p>
+ <div class="grid" id="propGrid"></div>
+</div></section>
+
+<!-- MANAGEMENT -->
+<section class="view" id="v-management"><div class="wrap two">
+ <div>
+  <h2>Property management</h2>
+  <p>Landlords and owners can ask about tenant sourcing, rent collection, inspections and routine maintenance coordination. This page demonstrates how such an enquiry is captured, qualified and routed to the right person.</p>
+  <ul><li>Tell us about the property and your goals.</li><li>A property-management lead is assigned a follow-up task.</li><li>We reply by your preferred contact method.</li></ul>
+  <p class="note">Demonstration only: no management services are being offered by this fictional brand.</p>
+ </div>
+ <div class="panel"><h3>Ask about property management</h3><div id="mgmtForm"></div></div>
+</div></section>
+
+<!-- AGENTS HUB -->
+<section class="view" id="v-agents"><div class="wrap">
+ <h2>Agents &amp; realtors</h2>
+ <p style="max-width:62ch">Register as an agent, sign the agency agreement, submit properties and record sales or rentals. Each step is saved by the company's system and confirmed with a reference ID.</p>
+ <div class="status info show" role="note"><b>Demonstration portal.</b> There is no login here. Your Agent ID identifies your submissions, and the server checks it against company records. A production portal must add real authentication (see the setup guide). Nothing you submit gives you access to confidential company data.</div>
+ <div class="cats">
+  <button class="cat" data-go="register"><b>1. Become an agent</b><span>Apply and receive your Agent ID.</span></button>
+  <button class="cat" data-go="agreement"><b>2. Sign the agreement</b><span>Review and submit your signature.</span></button>
+  <button class="cat" data-go="submit"><b>3. Submit a property</b><span>Sent for verification, never auto-published.</span></button>
+  <button class="cat" data-go="record"><b>4. Record a sale or rental</b><span>Submitted for management review.</span></button>
+  <button class="cat" data-go="dashboard"><b>Performance dashboard</b><span>Sample data only.</span></button>
+ </div>
+</div></section>
+
+<section class="view" id="v-register"><div class="wrap two">
+ <div><h2>Become an agent</h2><p>Apply to register as a HavenKey agent. Your application starts as <b>Pending Review</b>; registering does not approve you or give access to company records.</p>
+  <p class="note">We collect only what is needed to assess and contact you. No password is requested. Document upload is not configured in this demo; use references instead.</p></div>
+ <div class="panel"><form id="agentForm" novalidate></form><div id="agentDone"></div></div>
+</div></section>
+
+<section class="view" id="v-agreement"><div class="wrap two">
+ <div><h2>Agency agreement</h2>
+  <div class="status info show"><b>Demonstration agreement.</b> The wording below is placeholder text, not a company-approved or legally reviewed contract. Have a qualified Nigerian lawyer approve the real text before use. A typed name and tick-box are not identity verification and are not guaranteed to be legally binding in every circumstance.</div>
+  <div class="agree-box" id="agreeText" tabindex="0" aria-label="Agreement text"></div></div>
+ <div class="panel"><h3>Sign agreement</h3><form id="agreementForm" novalidate></form></div>
+</div></section>
+
+<section class="view" id="v-submit"><div class="wrap two">
+ <div><h2>Submit a property</h2><p>Submitted properties are saved as <b>Awaiting Verification</b>. The company verifies the property and your authority before anything is listed. Possible duplicates are flagged for staff to review; no credit is awarded automatically.</p>
+ <p class="note">Keep private owner details out of this form: give a short reference only.</p></div>
+ <div class="panel"><form id="propForm" novalidate></form></div>
+</div></section>
+
+<section class="view" id="v-record"><div class="wrap two">
+ <div><h2>Record a sale or rental</h2><p>Record a deal against an existing Property ID and the agents involved. This is a <b>submission for review</b>: it is not counted as a completed sale or rental until authorised staff verify completion.</p>
+ <p class="note">Use reference codes for clients, not full personal details.</p></div>
+ <div class="panel"><form id="txnForm" novalidate></form></div>
+</div></section>
+
+<section class="view" id="v-dashboard"><div class="wrap">
+ <h2>Performance dashboard</h2>
+ <div class="status bad show"><b>DEMONSTRATION DATA — FICTIONAL.</b> These figures are made-up samples. Real management views live in Airtable behind authentication; confidential records, commissions and other agents' data are never exposed on a public web page.</div>
+ <form class="search" id="dashFilters" style="margin-top:0"><div class="fgrid">
+  <div><label for="dPeriod">Reporting period</label><select id="dPeriod"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly" selected>Monthly</option><option value="quarterly">Quarterly</option><option value="annual">Annual</option><option value="custom">Custom range</option></select></div>
+  <div><label for="dFrom">From</label><input type="date" id="dFrom"></div><div><label for="dTo">To</label><input type="date" id="dTo"></div>
+  <div><label for="dAgent">Agent</label><select id="dAgent"></select></div>
+  <div><label for="dType">Property type</label><select id="dType"></select></div>
+  <div><label for="dLoc">Location</label><select id="dLoc"></select></div>
+  <div><label for="dTx">Sale vs rental</label><select id="dTx"><option value="all">All</option><option>Sale</option><option>Rental</option></select></div>
+  <div><label for="dStat">Transaction status</label><select id="dStat"><option value="all">All</option></select></div>
+ </div></form>
+ <p class="note" id="dashRange"></p>
+ <div class="kpis" id="kpis"></div>
+ <h3>By agent</h3><div class="scroll"><table class="t" id="agentTable"></table></div>
+ <h3 style="margin-top:1.5rem">Property inventory by status (unique properties)</h3><div id="inv"></div>
+ <details style="margin-top:1.5rem"><summary><b>How these numbers are counted</b></summary><ul class="agr">
+  <li>Completed sales/rentals use the <b>verified completion date</b>; submitted/acquired properties use the <b>submission date</b>; commission uses approval/payment dates.</li>
+  <li>A property submitted by several agents counts once as a company acquisition; credit follows the approved attribution.</li>
+  <li>A listing, reservation, enquiry or cancelled/disputed deal is never a completed sale. Commission calculated ≠ approved ≠ paid.</li></ul></details>
+</div></section>
+
+<section class="view" id="v-about"><div class="wrap two">
+ <div><h2>About HavenKey Abuja</h2>
+  <p>HavenKey Abuja is a <b>fictional demonstration brand</b>. It shows how a real estate agency in Abuja can advertise properties, capture enquiries and agents, and keep management informed automatically.</p>
+  <p>The technology behind the demonstration is built by Agbaje Automation: website forms, an n8n workflow, an Airtable CRM, Google Gemini analysis and Gmail notifications.</p>
+  <p class="note">This is not a registered company. No awards, testimonials, certifications or verified listings are claimed.</p></div>
+ <div class="panel"><h3>What the automation does</h3><ul class="agr"><li>Saves every enquiry once, even if you press submit twice.</li><li>Summarises it with AI and sets a rule-based priority.</li><li>Creates a follow-up task for a person.</li><li>Emails an acknowledgement and tells the right managers instantly.</li><li>Sends a daily summary to management.</li></ul></div>
+</div></section>
+
+<section class="view" id="v-contact"><div class="wrap two">
+ <div><h2>Contact us</h2><p>Send a general question. No property needs to be selected.</p><p class="note" id="altContact"></p></div>
+ <div class="panel"><div id="contactForm"></div></div>
+</div></section>
+</main>
+
+<dialog id="dlg" aria-labelledby="dTitle"><div class="dhead"><strong id="dTitle">Property</strong><button type="button" id="dClose">Close</button></div><div class="dbody" id="dBody"></div></dialog>
+
+<footer><div class="wrap"><p><b>HavenKey Abuja</b> — a fictional demonstration brand.</p><p>Demonstration website by Agbaje Automation. Property listings and enquiry data are illustrative.</p></div></footer>
+
+<script>
+const PROPS = [{"id": "HK-ABJ-001", "title": "Maitama Detached Residence with Garden", "tx": "Sale", "type": "Detached House", "loc": "Maitama", "desc": "Illustrative: five-bedroom detached house on a landscaped plot.", "price": 650000000, "period": "", "beds": 5, "baths": 6, "features": ["Boys quarters", "Backup power", "CCTV", "Garden"], "featured": true}, {"id": "HK-ABJ-002", "title": "Jabi Two-Bedroom Apartment near Jabi Lake", "tx": "Rent", "type": "Apartment", "loc": "Jabi", "desc": "Illustrative: two-bedroom apartment in a gated block.", "price": 6000000, "period": "Per Year", "beds": 2, "baths": 2, "features": ["Pre-paid meter", "Parking", "Borehole"], "featured": true}, {"id": "HK-ABJ-003", "title": "Gwarinpa Three-Bedroom Semi-Detached", "tx": "Rent", "type": "Semi-Detached House", "loc": "Gwarinpa", "desc": "Illustrative: three-bedroom semi-detached house in a quiet avenue.", "price": 3500000, "period": "Per Year", "beds": 3, "baths": 3, "features": ["Fitted kitchen", "Parking", "Water treatment"], "featured": false}, {"id": "HK-ABJ-004", "title": "Lokogoma 600sqm Residential Land", "tx": "Sale", "type": "Land", "loc": "Lokogoma", "desc": "Illustrative: residential plot, dry and accessible by tarred road.", "price": 45000000, "period": "", "beds": null, "baths": null, "features": ["600 sqm", "Accessible road", "Survey plan on request"], "featured": false}, {"id": "HK-ABJ-005", "title": "Wuse 2 Open-Plan Office Suite", "tx": "Rent", "type": "Commercial Property", "loc": "Wuse 2", "desc": "Illustrative: open-plan office suite with reception area.", "price": 18000000, "period": "Per Year", "beds": null, "baths": 2, "features": ["Lift access", "Standby generator", "Parking"], "featured": false}, {"id": "HK-ABJ-006", "title": "Guzape Four-Bedroom Terraced Duplex", "tx": "Sale", "type": "Terraced Duplex", "loc": "Guzape", "desc": "Illustrative: four-bedroom terraced duplex in a secured estate.", "price": 280000000, "period": "", "beds": 4, "baths": 5, "features": ["Estate security", "BQ", "Smart wiring"], "featured": true}, {"id": "HK-ABJ-007", "title": "Kubwa Three-Bedroom Semi-Detached", "tx": "Sale", "type": "Semi-Detached House", "loc": "Kubwa", "desc": "Illustrative: three-bedroom semi-detached house, newly painted.", "price": 65000000, "period": "", "beds": 3, "baths": 3, "features": ["Tiled floors", "Parking", "Fenced compound"], "featured": false}, {"id": "HK-ABJ-008", "title": "Wuse 2 Serviced Short-Let Studio", "tx": "Short-let", "type": "Short-let", "loc": "Wuse 2", "desc": "Illustrative: serviced studio apartment for short stays.", "price": 65000, "period": "Per Night", "beds": 1, "baths": 1, "features": ["Wi-Fi", "Air conditioning", "Housekeeping"], "featured": false}, {"id": "HK-ABJ-009", "title": "Lugbe Two-Bedroom Apartment", "tx": "Rent", "type": "Apartment", "loc": "Lugbe", "desc": "Illustrative: two-bedroom apartment close to the airport road.", "price": 1500000, "period": "Per Year", "beds": 2, "baths": 2, "features": ["Prepaid meter", "Parking", "Security"], "featured": false}, {"id": "HK-ABJ-010", "title": "Jabi Lakeside Three-Bedroom Apartment", "tx": "Sale", "type": "Apartment", "loc": "Jabi", "desc": "Illustrative: three-bedroom apartment in a lakeside development.", "price": 135000000, "period": "", "beds": 3, "baths": 3, "features": ["Lift", "Gym", "Power backup"], "featured": true}];
+const AGREEMENT = [
+ ["1. Parties to the agreement","[Company-approved wording to be inserted: identifies HavenKey Abuja (or the real company) and the agent.]"],
+ ["2. Agent identification","[Placeholder: agent's name, Agent ID and contact details as registered.]"],
+ ["3. Scope of the relationship","[Placeholder: the nature of the relationship, for example independent, non-exclusive agency.]"],
+ ["4. Agent responsibilities","[Placeholder: professional conduct, accuracy of information, compliance with applicable law.]"],
+ ["5. Property information and verification","[Placeholder: properties are verified by the company before listing; agents must supply accurate evidence of authority.]"],
+ ["6. Property submission and attribution","[Placeholder: how submissions are recorded and how competing submissions are reviewed and credited.]"],
+ ["7. Handling enquiries and clients","[Placeholder: rules for client contact, referrals and conflicts.]"],
+ ["8. Sales and rental transaction reporting","[Placeholder: transactions must be reported through the company system and are only complete once verified.]"],
+ ["9. Commission eligibility and calculation","[Placeholder: commission rules are set by the company and are not stated in this demonstration.]"],
+ ["10. Commission sharing between agents","[Placeholder: sharing rules as approved by the company.]"],
+ ["11. Commission approval and payment","[Placeholder: commission is approved by an authorised manager before payment.]"],
+ ["12. Confidentiality and data handling","[Placeholder: handling of personal data in line with applicable Nigerian data-protection requirements.]"],
+ ["13. Prohibited misrepresentation","[Placeholder: no false claims about properties, prices, availability or authority.]"],
+ ["14. Dispute escalation","[Placeholder: how disputes are escalated and decided.]"],
+ ["15. Termination and outstanding obligations","[Placeholder: termination rights and treatment of pending transactions.]"],
+ ["16. Commencement and review","[Placeholder: effective date and review of this agreement version.]"],
+ ["17. Signature and acceptance","[Placeholder: acceptance by typed signature; stronger identity verification or an e-signature provider may be required in production.]"]
+];
+const TYPES=["Apartment","Detached House","Semi-Detached House","Terraced Duplex","Land","Commercial Property","Short-let"];
+const TYPE_LABEL={"Short-let":"Short-let accommodation","Land":"Land","Commercial Property":"Commercial property","Apartment":"Apartments","Detached House":"Detached houses","Semi-Detached House":"Semi-detached houses","Terraced Duplex":"Terraced duplexes"};
+const LOCS=["Gwarinpa","Jabi","Wuse 2","Lokogoma","Kubwa","Lugbe","Maitama","Guzape"];
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const naira=n=>"₦"+Number(n).toLocaleString("en-NG");
+
+/* ---------- placeholder artwork (original SVG; replace with licensed photos via PROPS[].image) ---------- */
+function art(p,v){const c=["#16402f","#0f2e24","#244f3b"][v%3];let s="";
+ const t=p.type;
+ if(t==="Land")s='<path d="M0 230 L120 170 L330 190 L400 160 V300 H0Z" fill="#c9b98e"/><path d="M60 250 L330 200" stroke="#fff" stroke-dasharray="8 6" stroke-width="3"/><circle cx="320" cy="70" r="30" fill="#e5c97f"/>';
+ else if(t==="Apartment"||t==="Short-let")s='<rect x="110" y="60" width="180" height="200" fill="'+c+'"/>'+[0,1,2,3].map(r=>[0,1,2].map(k=>'<rect x="'+(128+k*52)+'" y="'+(78+r*44)+'" width="32" height="26" fill="#f1e4bd"/>').join("")).join("")+'<rect x="180" y="214" width="40" height="46" fill="#a8782f"/>';
+ else if(t==="Commercial Property")s='<rect x="90" y="40" width="220" height="220" fill="'+c+'"/>'+[0,1,2,3,4].map(r=>'<rect x="104" y="'+(56+r*38)+'" width="192" height="20" fill="#e9dcb4"/>').join("")+'<rect x="180" y="226" width="40" height="34" fill="#a8782f"/>';
+ else s='<polygon points="70,150 200,70 330,150" fill="#a8782f"/><rect x="90" y="150" width="220" height="110" fill="'+c+'"/><rect x="120" y="175" width="44" height="34" fill="#f1e4bd"/><rect x="236" y="175" width="44" height="34" fill="#f1e4bd"/><rect x="180" y="200" width="40" height="60" fill="#e5c97f"/>';
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+(v%2?"#e8efe9":"#f3ead2")+'"/><stop offset="1" stop-color="#d7ccaa"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/>'+s+'<rect y="260" width="400" height="40" fill="#b9ad88" opacity=".55"/><text x="10" y="290" font-family="Arial" font-size="11" fill="#33413a">Illustrative placeholder image</text></svg>';
+ return "data:image/svg+xml;utf8,"+encodeURIComponent(svg);}
+PROPS.forEach((p,i)=>{p.images=p.image?[p.image]:[art(p,i),art(p,i+1),art(p,i+2)];p.status="Illustrative demonstration listing";});
+const txLabel={sale:"For sale",rent:"For rent",shortlet:"Short-let"};
+const txKey=p=>p.tx==="Sale"?"sale":(p.tx==="Rent"?"rent":"shortlet");
+const priceHtml=p=>'<span class="price">'+naira(p.price)+(p.period?' <small>'+esc(p.period.toLowerCase())+'</small>':'')+'</span>';
+
+/* ---------- navigation ---------- */
+const VIEWS=["home","properties","management","agents","register","agreement","submit","record","dashboard","about","contact"];
+function show(name){
+ let tx=null;if(name==="sale"){tx="sale";name="properties";}if(name==="rent"){tx="rent";name="properties";}
+ if(!VIEWS.includes(name))name="home";
+ $$("main section.view").forEach(s=>s.classList.toggle("active",s.id==="v-"+name));
+ $$("nav a").forEach(a=>a.removeAttribute("aria-current"));
+ const key=(tx||name);const link=$$('nav a[data-nav="'+key+'"]:not(.cta)')[0]||$$('nav a[data-nav="'+(name==="register"||name==="agreement"||name==="submit"||name==="record"||name==="dashboard"?"agents":name)+'"]:not(.cta)')[0];
+ if(link)link.setAttribute("aria-current","page");
+ if(tx){$("#fTx").value=tx;$("#listTitle").textContent=tx==="sale"?"Properties for sale":"Properties for rent";}else if(name==="properties")$("#listTitle").textContent="Properties";
+ if(name==="properties"&&!tx){if(!window._keep)$("#filters").reset();window._keep=false;}
+ if(name==="properties")renderList();
+ if(name==="dashboard")renderDash();
+ $("#nav").classList.remove("open");$("#burger").setAttribute("aria-expanded","false");
+ window.scrollTo(0,0);document.title="HavenKey Abuja — "+(name==="home"?"Properties for sale and rent in Abuja":name);
+}
+function route(){show(location.hash.replace("#","")||"home");}
+window.addEventListener("hashchange",route);
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){location.hash=g.dataset.go;}});
+$("#burger").addEventListener("click",()=>{const o=$("#nav").classList.toggle("open");$("#burger").setAttribute("aria-expanded",o);});
+
+/* ---------- listings ---------- */
+function fillSelect(sel,items,first,labelFn){sel.innerHTML='<option value="all">'+first+'</option>'+items.map(i=>'<option value="'+esc(i)+'">'+esc(labelFn?labelFn(i):i)+'</option>').join("");}
+["hType","fType"].forEach(i=>fillSelect($("#"+i),TYPES,"All types",t=>TYPE_LABEL[t]));
+["hLoc","fLoc"].forEach(i=>fillSelect($("#"+i),LOCS,"All locations"));
+function card(p){const d=document.createElement("article");d.className="card";
+ d.innerHTML='<img alt="Illustrative placeholder image of '+esc(p.title)+'" src="'+p.images[0]+'" loading="lazy"><div class="body"><div><span class="tag '+(p.tx==="Sale"?"":"rent")+'">'+txLabel[txKey(p)]+'</span> <span class="tag ill">Illustrative · '+esc(p.id)+'</span></div><h3 style="margin:.3rem 0 0">'+esc(p.title)+'</h3><div class="meta">'+esc(p.loc)+', Abuja · '+esc(TYPE_LABEL[p.type]||p.type)+(p.beds!=null?' · '+p.beds+' bed':'')+(p.baths!=null?' · '+p.baths+' bath':'')+'</div>'+priceHtml(p)+'<div class="actions"><button class="btn" data-open="'+esc(p.id)+'">View details</button><button class="btn ghost" data-enq="'+esc(p.id)+'">Enquire</button></div></div>';return d;}
+function renderFeatured(){const g=$("#featGrid");g.innerHTML="";PROPS.filter(p=>p.featured).forEach(p=>g.appendChild(card(p)));}
+function renderCats(){const g=$("#catGrid");g.innerHTML="";TYPES.forEach(t=>{const n=PROPS.filter(p=>p.type===t).length;const b=document.createElement("button");b.className="cat";b.innerHTML='<b>'+esc(TYPE_LABEL[t])+'</b><span>'+n+' illustrative listing'+(n===1?"":"s")+'</span>';b.onclick=()=>{window._keep=true;$("#fType").value=t;$("#fTx").value="all";$("#fLoc").value="all";location.hash="properties";if(location.hash==="#properties")renderList();};g.appendChild(b);});}
+function filtered(){const tx=$("#fTx").value,ty=$("#fType").value,lo=$("#fLoc").value,mn=Number($("#fMin").value)||0,mx=Number($("#fMax").value)||Infinity,bd=Number($("#fBeds").value)||0;
+ return PROPS.filter(p=>(tx==="all"||txKey(p)===tx)&&(ty==="all"||p.type===ty)&&(lo==="all"||p.loc===lo)&&p.price>=mn&&p.price<=mx&&(bd===0||(p.beds!=null&&p.beds>=bd)));}
+function renderList(){const r=filtered(),g=$("#propGrid");g.innerHTML="";r.forEach(p=>g.appendChild(card(p)));
+ $("#resultCount").textContent=r.length?r.length+" illustrative propert"+(r.length===1?"y":"ies")+" found.":"No properties match these filters. Try widening your budget or location.";}
+$("#filters").addEventListener("input",renderList);$("#filters").addEventListener("submit",e=>e.preventDefault());
+$("#fReset").onclick=()=>{$("#filters").reset();$("#fTx").value="all";renderList();};
+$("#heroSearch").addEventListener("submit",e=>{e.preventDefault();window._keep=true;$("#fTx").value=$("#hTx").value;$("#fType").value=$("#hType").value;$("#fLoc").value=$("#hLoc").value;$("#fMin").value="";$("#fMax").value="";$("#fBeds").value="0";if(location.hash==="#properties")renderList();else location.hash="properties";});
+document.addEventListener("click",e=>{const o=e.target.closest("[data-open]"),q=e.target.closest("[data-enq]");if(o)openDetail(o.dataset.open,false);if(q)openDetail(q.dataset.enq,true);});
+
+/* ---------- detail dialog ---------- */
+const dlg=$("#dlg");$("#dClose").onclick=()=>dlg.close();dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close();});
+function openDetail(id,focusForm){const p=PROPS.find(x=>x.id===id);if(!p)return;
+ $("#dTitle").textContent=p.title;
+ $("#dBody").innerHTML='<div class="gal"><img src="'+p.images[0]+'" alt="Illustrative placeholder image 1"><div class="side"><img src="'+p.images[1]+'" alt="Illustrative placeholder image 2"><img src="'+p.images[2]+'" alt="Illustrative placeholder image 3"></div></div>'
+ +'<div class="two" style="margin-top:1.2rem"><div><p><span class="tag '+(p.tx==="Sale"?"":"rent")+'">'+txLabel[txKey(p)]+'</span> <span class="tag ill">'+esc(p.id)+'</span></p>'+priceHtml(p)+'<p class="meta">'+esc(p.loc)+', Abuja · '+esc(TYPE_LABEL[p.type]||p.type)+(p.beds!=null?' · '+p.beds+' bedrooms':'')+(p.baths!=null?' · '+p.baths+' bathrooms':'')+'</p>'
+ +'<p><b>Status:</b> '+esc(p.status)+' (not real inventory)</p><p>'+esc(p.desc)+'</p><h3>Features</h3><ul class="feat">'+p.features.map(f=>'<li>'+esc(f)+'</li>').join("")+'</ul>'
+ +'<button class="btn gold" id="reqInsp">Request an inspection</button><p class="note" style="margin-top:.6rem">Requesting an inspection sends an enquiry. Availability and times are confirmed by our team.</p></div>'
+ +'<div class="panel"><h3>Enquire about this property</h3><div id="dForm"></div></div></div>';
+ const form=enquiryForm({property:p});$("#dForm").appendChild(form);
+ $("#reqInsp").onclick=()=>{$("select[name=category]",form).value="property_inspection";toggleDate(form);$("input[name=date]",form).focus();};
+ if(!dlg.open)dlg.showModal();if(focusForm)setTimeout(()=>$("input[name=name]",form).focus(),50);}
+
+/* ---------- generic form + submit plumbing ---------- */
+function uuid(){return (crypto&&crypto.randomUUID)?crypto.randomUUID():"id-"+Date.now().toString(36)+Math.random().toString(36).slice(2,10);}
+function field(f){const id="f"+Math.random().toString(36).slice(2,8);const w=document.createElement("div");w.className="field"+(f.full?" full":"");
+ let ctl;
+ if(f.type==="select"){ctl='<select id="'+id+'" name="'+f.name+'"'+(f.req?' required':'')+'>'+(f.placeholder?'<option value="">'+esc(f.placeholder)+'</option>':"")+f.options.map(o=>{const v=Array.isArray(o)?o[0]:o,l=Array.isArray(o)?o[1]:o;return '<option value="'+esc(v)+'">'+esc(l)+'</option>';}).join("")+'</select>';}
+ else if(f.type==="textarea")ctl='<textarea id="'+id+'" name="'+f.name+'"'+(f.req?' required':'')+(f.max?' maxlength="'+f.max+'"':'')+'></textarea>';
+ else if(f.type==="check"){w.innerHTML='<label class="check"><input type="checkbox" name="'+f.name+'"'+(f.req?' required':'')+'><span>'+f.label+'</span></label><div class="msg" aria-live="polite"></div>';return w;}
+ else ctl='<input id="'+id+'" name="'+f.name+'" type="'+(f.type||"text")+'"'+(f.req?' required':'')+(f.max?' maxlength="'+f.max+'"':'')+(f.min!=null?' min="'+f.min+'"':'')+(f.inputmode?' inputmode="'+f.inputmode+'"':'')+(f.ph?' placeholder="'+esc(f.ph)+'"':'')+(f.auto?' autocomplete="'+f.auto+'"':'')+'>';
+ w.innerHTML='<label for="'+id+'">'+esc(f.label)+(f.req?' *':'')+'</label>'+ctl+(f.help?'<div class="note">'+esc(f.help)+'</div>':'')+'<div class="msg" aria-live="polite"></div>';return w;}
+function buildForm(form,fields,submitLabel){form.innerHTML="";const g=document.createElement("div");g.className="form-grid";fields.forEach(f=>g.appendChild(field(f)));form.appendChild(g);
+ form.insertAdjacentHTML("beforeend",'<div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website_url" tabindex="-1" autocomplete="off"></label></div><div class="status" role="status" aria-live="polite"></div><button class="btn gold" type="submit">'+esc(submitLabel)+'</button>');}
+const val=(form,n)=>{const e=form.elements[n];return e?(e.type==="checkbox"?e.checked:e.value.trim()):"";};
+function setErrors(form,errs){$$(".field",form).forEach(f=>{f.classList.remove("err");$(".msg",f).textContent="";});
+ errs.forEach(([n,m])=>{const el=form.elements[n];if(!el)return;const f=el.closest(".field");if(f){f.classList.add("err");$(".msg",f).textContent=m;}});
+ if(errs.length){const el=form.elements[errs[0][0]];if(el&&el.focus)el.focus();}}
+function banner(form,kind,html){const s=$(".status",form);s.className="status show "+kind;s.innerHTML=html;}
+const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;const phoneOk=v=>{const d=v.replace(/[^\d+]/g,"");return d.replace(/\+/g,"").length>=10&&d.replace(/\+/g,"").length<=15;};
+function altContactHtml(){const a=HAVENKEY_CONFIG.alternativeContact;const bits=[a.email?'email <a href="mailto:'+esc(a.email)+'">'+esc(a.email)+'</a>':"",a.phone?'call '+esc(a.phone):""].filter(Boolean);return bits.length?" You can also "+bits.join(" or ")+".":"";}
+const attempts=new WeakMap();   // form -> stable submission id, reused on retries so the server can de-duplicate
+function submissionId(form){if(!attempts.has(form))attempts.set(form,uuid());return attempts.get(form);}
+
+/* Sends JSON to n8n. Resolves {ok:true,data} only for a confirmed success response; otherwise {ok:false,...}. */
+async function post(key,payload){
+ const url=HAVENKEY_CONFIG.webhooks[key];
+ if(!url||/PASTE_|YOUR-/.test(url))return{ok:false,kind:"config",message:"This form is not connected yet. The site owner must paste the production n8n webhook URL into HAVENKEY_CONFIG. Nothing was sent or saved."};
+ const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),HAVENKEY_CONFIG.requestTimeoutMs);
+ try{
+  const res=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:ctl.signal});
+  let data=null;try{data=await res.json();}catch(e){}
+  if(res.ok&&data&&data.success===true)return{ok:true,data};
+  if(data&&data.success===false)return{ok:false,kind:"server",status:res.status,code:data.code,message:data.message||"We could not process your submission.",fields:data.fields||[]};
+  return{ok:false,kind:"server",status:res.status,message:"We could not confirm that your submission was saved."};
+ }catch(e){return{ok:false,kind:e.name==="AbortError"?"timeout":"network",message:e.name==="AbortError"?"The server took too long to respond, so we cannot confirm whether your submission was saved.":"We could not reach the server, so your submission was not confirmed."};}
+ finally{clearTimeout(t);}
+}
+async function run(form,key,payload,onOk){
+ const btn=$("button[type=submit]",form);if(btn.disabled)return;       // prevent double submits
+ const label=btn.textContent;btn.disabled=true;btn.innerHTML='<span class="spin"></span>Sending…';banner(form,"info","Sending to the server — please wait. Do not close this page.");
+ const r=await post(key,payload);btn.disabled=false;btn.textContent=label;
+ if(r.ok){banner(form,"ok",esc(r.data.message||"Saved."));attempts.delete(form);onOk(r.data);return;}
+ if(r.fields&&r.fields.length)setErrors(form,r.fields.map(f=>[f,"Please check this field"]));
+ const retry=(r.kind==="timeout"||r.kind==="network"||(r.status>=500))?" You can safely press the button again: your submission has a stable reference so it will not be saved twice.":"";
+ banner(form,"bad","<b>Not confirmed.</b> "+esc(r.message)+esc(retry)+altContactHtml());}
+function remember(o){try{sessionStorage.setItem("hk_agent",JSON.stringify(o));}catch(e){}}
+function recall(){try{return JSON.parse(sessionStorage.getItem("hk_agent")||"{}");}catch(e){return{};}}
+
+/* ---------- enquiry forms (property + general + management) ---------- */
+const CATS=[["property_information","Property information"],["property_inspection","Property inspection"],["buying","Buying"],["renting","Renting"],["selling_a_property","Selling a property"],["property_management","Property management"],["general_enquiry","General enquiry"]];
+function toggleDate(form){const c=val(form,"category");const w=$("input[name=date]",form).closest(".field");w.style.display=(c==="property_inspection"||c==="buying"||c==="renting")?"":"none";}
+function enquiryForm(opt){const p=opt.property||null;const form=document.createElement("form");form.noValidate=true;
+ const cats=opt.cats||CATS;
+ buildForm(form,[
+  {name:"name",label:"Full name",req:true,max:100,auto:"name"},{name:"email",label:"Email address",type:"email",max:254,auto:"email"},
+  {name:"phone",label:"Phone number",type:"tel",max:30,auto:"tel",ph:"0803 000 0000",help:"Email or phone is required."},
+  {name:"method",label:"Preferred contact method",type:"select",options:[["email","Email"],["phone","Phone call"],["whatsapp","WhatsApp"],["sms","SMS"]]},
+  {name:"category",label:"Enquiry category",type:"select",options:cats,full:true},
+  {name:"budget",label:"Your budget (₦), if different from the price",type:"number",min:0,inputmode:"numeric"},
+  {name:"date",label:"Preferred inspection date",type:"date"},
+  {name:"message",label:"Message",type:"textarea",req:true,max:2000,full:true},
+  {name:"consent",type:"check",req:true,label:"I agree to be contacted about this enquiry. We use your details only to respond to it.",full:true}],"Send enquiry");
+ if(opt.defaultCategory)form.elements.category.value=opt.defaultCategory;else if(p)form.elements.category.value="property_information";
+ if(p)form.insertAdjacentHTML("afterbegin",'<p class="note"><b>'+esc(p.title)+'</b> · '+esc(p.id)+' (illustrative)</p>');
+ form.elements.category.addEventListener("change",()=>toggleDate(form));toggleDate(form);
+ form.addEventListener("submit",e=>{e.preventDefault();const errs=[];
+  if(val(form,"name").length<2)errs.push(["name","Please enter your name"]);
+  const em=val(form,"email"),ph=val(form,"phone");
+  if(em&&!emailRe.test(em))errs.push(["email","Enter a valid email address"]);
+  if(ph&&!phoneOk(ph))errs.push(["phone","Enter a valid phone number"]);
+  if(!em&&!ph)errs.push(["email","Enter an email address or a phone number"]);
+  if(val(form,"message").length<5)errs.push(["message","Please write a short message"]);
+  if(!val(form,"consent"))errs.push(["consent","Consent is required so we can respond"]);
+  const b=val(form,"budget");if(b!==""&&(isNaN(b)||Number(b)<0))errs.push(["budget","Enter a valid amount"]);
+  setErrors(form,errs);if(errs.length)return;
+  const cat=val(form,"category");
+  run(form,"enquiry",{source:"havenkey_abuja_website",event:"property_enquiry",submission_id:submissionId(form),submitted_at:new Date().toISOString(),
+   customer:{name:val(form,"name"),email:em||null,phone:ph||null,preferred_contact_method:val(form,"method")},
+   enquiry:{category:cat,budget:b===""?null:Number(b),preferred_inspection_date:val(form,"date")||null,message:val(form,"message"),consent_to_contact:true},
+   property:p?{id:p.id,title:p.title,transaction_type:txKey(p)}:{id:null,title:null,transaction_type:null}},
+   d=>{banner(form,"ok","<b>Enquiry received.</b> Your reference is <b>"+esc(d.reference)+"</b>. Our team will review it and follow up. Availability and inspection times are not confirmed yet.");form.reset();toggleDate(form);});
+ });return form;}
+$("#contactForm").appendChild(enquiryForm({defaultCategory:"general_enquiry",cats:CATS.filter(c=>["general_enquiry","buying","renting","selling_a_property","property_management"].includes(c[0]))}));
+$("#mgmtForm").appendChild(enquiryForm({defaultCategory:"property_management",cats:[["property_management","Property management"],["general_enquiry","General enquiry"]]}));
+{const a=HAVENKEY_CONFIG.alternativeContact;$("#altContact").textContent=(a.email||a.phone)?"Prefer to talk? "+[a.email,a.phone].filter(Boolean).join(" · "):"Direct contact details are not configured in this demonstration.";}
+
+/* ---------- agent registration ---------- */
+const agentForm=$("#agentForm");
+buildForm(agentForm,[
+ {name:"first",label:"First name",req:true,max:60,auto:"given-name"},{name:"middle",label:"Middle name (optional)",max:60},{name:"last",label:"Last name",req:true,max:60,auto:"family-name"},
+ {name:"phone",label:"Phone (with country code if outside Nigeria)",type:"tel",req:true,max:30,auto:"tel",ph:"+234 803 000 0000"},{name:"email",label:"Email address",type:"email",req:true,max:254,auto:"email"},
+ {name:"city",label:"City or operating location",req:true,max:80},{name:"channel",label:"Preferred communication channel",type:"select",options:[["email","Email"],["phone","Phone call"],["whatsapp","WhatsApp"],["sms","SMS"]]},
+ {name:"agency",label:"Professional or agency name (optional)",max:120},{name:"years",label:"Years of real estate experience (optional)",type:"number",min:0},
+ {name:"role",label:"Role",type:"select",req:true,placeholder:"Select a role",options:["Independent realtor","Sales agent","Letting or rental agent","Property acquisition agent","Property manager","Agency representative","Other"]},
+ {name:"roleOther",label:"If Other, please explain",max:200},{name:"areas",label:"Areas served (optional)",max:200},
+ {name:"ptypes",label:"Property types handled (optional)",max:200},{name:"ref",label:"How did you hear about us? (optional)",max:100},
+ {name:"intro",label:"Short professional introduction (optional)",type:"textarea",max:800,full:true},
+ {name:"c1",type:"check",req:true,full:true,label:"I have read the privacy notice: my details are used only to assess my application and contact me, and are stored in the company's CRM."},
+ {name:"c2",type:"check",req:true,full:true,label:"I agree to be contacted about my application."}],"Submit application");
+agentForm.addEventListener("submit",e=>{e.preventDefault();const errs=[];
+ ["first","last","city"].forEach(n=>{if(val(agentForm,n).length<2)errs.push([n,"Required"]);});
+ if(!emailRe.test(val(agentForm,"email")))errs.push(["email","Enter a valid email address"]);
+ if(!phoneOk(val(agentForm,"phone")))errs.push(["phone","Enter a valid phone number"]);
+ if(!val(agentForm,"role"))errs.push(["role","Select a role"]);
+ if(val(agentForm,"role")==="Other"&&val(agentForm,"roleOther").length<3)errs.push(["roleOther","Please explain"]);
+ if(!val(agentForm,"c1"))errs.push(["c1","Required"]);if(!val(agentForm,"c2"))errs.push(["c2","Required"]);
+ setErrors(agentForm,errs);if(errs.length)return;const y=val(agentForm,"years");
+ run(agentForm,"agent",{source:"havenkey_abuja_website",event:"agent_registration",submission_id:submissionId(agentForm),submitted_at:new Date().toISOString(),website_url:val(agentForm,"website_url"),
+  applicant:{first_name:val(agentForm,"first"),middle_name:val(agentForm,"middle")||null,last_name:val(agentForm,"last"),phone:val(agentForm,"phone"),email:val(agentForm,"email"),city:val(agentForm,"city"),preferred_channel:val(agentForm,"channel"),agency_name:val(agentForm,"agency")||null,years_experience:y===""?null:Number(y)},
+  role:{type:val(agentForm,"role"),other_explanation:val(agentForm,"roleOther")||null},
+  profile:{intro:val(agentForm,"intro")||null,areas_served:val(agentForm,"areas")||null,property_types:val(agentForm,"ptypes")||null,referral_source:val(agentForm,"ref")||null},
+  consent:{privacy:true,contact:true}},
+  d=>{const name=[val(agentForm,"first"),val(agentForm,"last")].join(" ");const email=val(agentForm,"email");
+   if(d.displayId)remember({id:d.displayId,email,name});
+   $("#agentDone").innerHTML='<div class="status ok show"><b>Your agent application has been received.</b></div><div class="idbox"><div class="note">Your Agent ID</div><div class="big">'+esc(d.displayId||"(ID not returned - contact HavenKey)")+'</div></div><p><b>Name:</b> '+esc(name)+'<br><b>Registered:</b> '+esc(new Date(d.registeredAt||Date.now()).toLocaleString("en-GB"))+'<br><b>Status:</b> '+esc(d.status||"Pending Review")+'</p><p>Please keep your Agent ID: you will use it to identify your property submissions and transactions. Next, sign the agency agreement. Property submission is subject to company policy.</p><p><button class="btn gold" data-go="agreement">Review and sign agreement</button> <button class="btn ghost" data-go="submit">Continue to property submission</button></p>';
+   agentForm.style.display="none";});});
+
+/* ---------- agreement ---------- */
+$("#agreeText").innerHTML='<p class="note">Version '+esc(HAVENKEY_CONFIG.agreementVersion)+' (demonstration)</p>'+AGREEMENT.map(a=>'<h4>'+esc(a[0])+'</h4><p>'+esc(a[1])+'</p>').join("");
+const agrForm=$("#agreementForm");
+buildForm(agrForm,[
+ {name:"agent",label:"Agent ID",req:true,ph:"HK-AGT-2026-0001",max:20,full:true},{name:"email",label:"Your registered email",type:"email",req:true,max:254,auto:"email",full:true},
+ {name:"legal",label:"Full legal name",req:true,max:120,full:true},{name:"typed",label:"Type your full legal name as your signature",req:true,max:120,full:true},
+ {name:"read",type:"check",req:true,full:true,label:"I have read the whole agreement (version "+HAVENKEY_CONFIG.agreementVersion+") and accept it."},
+ {name:"data",type:"check",req:true,full:true,label:"I acknowledge the confidentiality and data-handling terms."}],"Submit signature");
+agrForm.addEventListener("submit",e=>{e.preventDefault();const errs=[];
+ if(!/^HK-AGT-\d{4}-\d{4}$/i.test(val(agrForm,"agent")))errs.push(["agent","Format: HK-AGT-2026-0001"]);
+ if(!emailRe.test(val(agrForm,"email")))errs.push(["email","Enter your registered email"]);
+ if(val(agrForm,"legal").length<3)errs.push(["legal","Required"]);
+ if(val(agrForm,"typed").toLowerCase()!==val(agrForm,"legal").toLowerCase()||val(agrForm,"typed").length<3)errs.push(["typed","Must match your full legal name"]);
+ if(!val(agrForm,"read"))errs.push(["read","Required"]);if(!val(agrForm,"data"))errs.push(["data","Required"]);
+ setErrors(agrForm,errs);if(errs.length)return;
+ run(agrForm,"agreement",{source:"havenkey_abuja_website",event:"agreement_signature",submission_id:submissionId(agrForm),submitted_at:new Date().toISOString(),website_url:val(agrForm,"website_url"),
+  agent_id:val(agrForm,"agent").toUpperCase(),registered_email:val(agrForm,"email"),full_legal_name:val(agrForm,"legal"),agreement_version:HAVENKEY_CONFIG.agreementVersion,accepted:true,typed_signature:val(agrForm,"typed"),acknowledgements:{read:true,data_handling:true}},
+  d=>{banner(agrForm,"ok","<b>Signature recorded.</b> Status: <b>"+esc(d.status)+"</b>. This is not an approval: management still has to review it.");});});
+
+/* ---------- property submission ---------- */
+const propForm=$("#propForm");
+buildForm(propForm,[
+ {name:"agent",label:"Agent ID",req:true,ph:"HK-AGT-2026-0001",max:20},{name:"title",label:"Property title",req:true,max:140},
+ {name:"type",label:"Property type",type:"select",req:true,placeholder:"Select type",options:TYPES},{name:"intent",label:"Transaction intention",type:"select",req:true,placeholder:"Select",options:["Sale","Rental","Both"]},
+ {name:"address",label:"Full property location",req:true,max:200,full:true},{name:"area",label:"City or area",req:true,max:60,ph:"e.g. Gwarinpa"},
+ {name:"beds",label:"Bedrooms (if relevant)",type:"number",min:0},{name:"baths",label:"Bathrooms (if relevant)",type:"number",min:0},
+ {name:"sale",label:"Asking sale price (₦)",type:"number",min:0,inputmode:"numeric"},{name:"rent",label:"Asking rent (₦)",type:"number",min:0,inputmode:"numeric"},
+ {name:"period",label:"Rental period",type:"select",placeholder:"Select",options:["Per Year","Per Month","Per Night"]},{name:"avail",label:"Availability",type:"select",req:true,placeholder:"Select",options:["Available Now","Available Soon","Occupied"]},
+ {name:"desc",label:"Description",type:"textarea",req:true,max:1500,full:true},
+ {name:"owner",label:"Owner or representative reference (no private details)",max:120,full:true},
+ {name:"evid",label:"Evidence of your authority to submit this property (reference)",req:true,max:200,full:true,help:"File upload is not configured in this demo. Enter a document reference (for example a mandate letter number)."}],"Submit property");
+{const r=recall();if(r.id){propForm.elements.agent.value=r.id;agrForm.elements.agent.value=r.id;agrForm.elements.email.value=r.email||"";agrForm.elements.legal.value=r.name||"";}}
+propForm.addEventListener("submit",e=>{e.preventDefault();const errs=[];
+ if(!/^HK-AGT-\d{4}-\d{4}$/i.test(val(propForm,"agent")))errs.push(["agent","Format: HK-AGT-2026-0001"]);
+ ["title","address","area","desc","evid"].forEach(n=>{if(val(propForm,n).length<(n==="desc"?10:3))errs.push([n,"Required"]);});
+ if(!val(propForm,"type"))errs.push(["type","Select a type"]);if(!val(propForm,"intent"))errs.push(["intent","Select"]);if(!val(propForm,"avail"))errs.push(["avail","Select"]);
+ const it=val(propForm,"intent");
+ if((it==="Sale"||it==="Both")&&!(Number(val(propForm,"sale"))>0))errs.push(["sale","Required for sale"]);
+ if((it==="Rental"||it==="Both")){if(!(Number(val(propForm,"rent"))>0))errs.push(["rent","Required for rental"]);if(!val(propForm,"period"))errs.push(["period","Required for rental"]);}
+ setErrors(propForm,errs);if(errs.length)return;const n=k=>val(propForm,k)===""?null:Number(val(propForm,k));
+ run(propForm,"property",{source:"havenkey_abuja_website",event:"property_submission",submission_id:submissionId(propForm),submitted_at:new Date().toISOString(),website_url:val(propForm,"website_url"),agent_id:val(propForm,"agent").toUpperCase(),
+  property:{title:val(propForm,"title"),type:val(propForm,"type"),transaction_intention:it,address:val(propForm,"address"),area:val(propForm,"area"),bedrooms:n("beds"),bathrooms:n("baths"),asking_sale_price:n("sale"),asking_rent:n("rent"),rental_period:val(propForm,"period")||null,description:val(propForm,"desc"),availability:val(propForm,"avail"),owner_reference:val(propForm,"owner")||null,authority_evidence_ref:val(propForm,"evid")}},
+  d=>{banner(propForm,"ok","<b>Property saved.</b> Property ID: <b>"+esc(d.displayId||"(pending)")+"</b> · Status: <b>"+esc(d.status)+"</b>."+(d.possibleDuplicateFlagged?" It was flagged for a duplicate check by staff; no credit has been awarded.":"")+" It is not published until verified.");});});
+
+/* ---------- transaction ---------- */
+const txnForm=$("#txnForm");
+buildForm(txnForm,[
+ {name:"property",label:"Property ID",req:true,ph:"HK-PROP-2026-0001",max:20},{name:"agents",label:"Agent ID(s), comma separated (up to 4)",req:true,max:100,ph:"HK-AGT-2026-0001, HK-AGT-2026-0002"},
+ {name:"type",label:"Transaction type",type:"select",req:true,placeholder:"Select",options:["Sale","Rental"]},
+ {name:"status",label:"Transaction status",type:"select",req:true,placeholder:"Select",options:["Enquiry","Inspection","Offer Received","Negotiation","Reserved","Pending Completion",["Completed","Completed (agent-reported; needs verification)"]]},
+ {name:"client",label:"Buyer or tenant reference",req:true,max:80,help:"A reference code, not full personal details."},{name:"counter",label:"Seller or landlord reference",max:80},
+ {name:"amount",label:"Agreed transaction amount (₦)",type:"number",req:true,min:0,inputmode:"numeric"},{name:"fee",label:"Agreed fee amount (₦), if commission is based on a fee",type:"number",min:0,inputmode:"numeric"},
+ {name:"period",label:"Rental period (rentals)",type:"select",placeholder:"Select",options:["Per Year","Per Month","Per Night"]},
+ {name:"offer",label:"Offer / negotiation date",type:"date"},{name:"reserve",label:"Reservation date",type:"date"},{name:"comp",label:"Claimed completion date",type:"date"},
+ {name:"evid",label:"Evidence or document reference",max:200,full:true},{name:"notes",label:"Notes for management",type:"textarea",max:800,full:true}],"Submit for review");
+txnForm.addEventListener("submit",e=>{e.preventDefault();const errs=[];
+ if(!/^HK-(ABJ|PROP)-[A-Z0-9-]{3,12}$/i.test(val(txnForm,"property")))errs.push(["property","Enter a valid Property ID"]);
+ const ids=val(txnForm,"agents").split(/[\s,;]+/).filter(Boolean).map(s=>s.toUpperCase());
+ if(!ids.length||ids.length>4||ids.some(i=>!/^HK-AGT-\d{4}-\d{4}$/.test(i)))errs.push(["agents","Enter 1 to 4 valid Agent IDs"]);
+ if(!val(txnForm,"type"))errs.push(["type","Select"]);if(!val(txnForm,"status"))errs.push(["status","Select"]);
+ if(val(txnForm,"client").length<2)errs.push(["client","Required"]);if(!(Number(val(txnForm,"amount"))>0))errs.push(["amount","Enter an amount"]);
+ if(val(txnForm,"type")==="Rental"&&!val(txnForm,"period"))errs.push(["period","Required for rentals"]);
+ setErrors(txnForm,errs);if(errs.length)return;const n=k=>val(txnForm,k)===""?null:Number(val(txnForm,k)),d=k=>val(txnForm,k)||null;
+ run(txnForm,"transaction",{source:"havenkey_abuja_website",event:"transaction_submission",submission_id:submissionId(txnForm),submitted_at:new Date().toISOString(),website_url:val(txnForm,"website_url"),
+  transaction:{property_id:val(txnForm,"property").toUpperCase(),agent_ids:ids,type:val(txnForm,"type"),client_reference:val(txnForm,"client"),counterparty_reference:d("counter"),amount:n("amount"),agreed_fee:n("fee"),rental_period:d("period"),offer_date:d("offer"),reservation_date:d("reserve"),completion_date:d("comp"),status:val(txnForm,"status"),evidence_ref:d("evid"),notes:d("notes")}},
+  data=>{banner(txnForm,"ok","<b>Transaction recorded for review.</b> Transaction ID: <b>"+esc(data.displayId||"(pending)")+"</b> · Status: <b>"+esc(data.status)+"</b>. It is NOT yet counted as a completed "+(val(txnForm,"type")==="Sale"?"sale":"rental")+"; management must verify it.");});});
+
+/* ---------- demo dashboard (fictional data, client-side only) ---------- */
+const D={agents:[["HK-AGT-DEMO-01","Agent A (fictional)"],["HK-AGT-DEMO-02","Agent B (fictional)"],["HK-AGT-DEMO-03","Agent C (fictional)"],["HK-AGT-DEMO-04","Agent D (fictional)"]],
+ props:[["P1","Apartment","Jabi","Active Listing",1,"2026-08-12"],["P2","Detached House","Maitama","Sold",2,"2026-06-03"],["P3","Land","Lokogoma","Verified",1,"2026-09-20"],["P4","Apartment","Gwarinpa","Rented",3,"2026-09-02"],["P5","Semi-Detached House","Kubwa","Active Listing",3,"2026-09-25"],["P6","Terraced Duplex","Guzape","Reserved or Under Negotiation",2,"2026-10-01"],["P7","Commercial Property","Wuse 2","Awaiting Verification",4,"2026-10-06"],["P8","Apartment","Lugbe","Rented",4,"2026-07-15"],["P9","Detached House","Maitama","Sold",1,"2026-03-11"],["P10","Land","Lokogoma","Rejected",4,"2026-09-29"]],
+ txns:[["T1","P2","Sale",[2],1.8e8,"Completed","2026-09-14","2026-09-14","Verified",2.4e6],["T2","P4","Rental",[3],3.2e6,"Completed","2026-09-28","2026-09-28","Verified",.3e6],["T3","P8","Rental",[4],1.6e6,"Completed","2026-08-05","2026-08-05","Verified",.16e6],["T4","P9","Sale",[1,3],9.5e7,"Completed","2026-04-20","2026-04-20","Verified",1.1e6],["T5","P6","Sale",[2],2.6e8,"Reserved","2026-10-02","","Pending",0],["T6","P1","Rental",[1],5.5e6,"Negotiation","2026-10-05","","Pending",0],["T7","P5","Sale",[3],6.2e7,"Cancelled","2026-09-30","","Rejected",0],["T8","P3","Sale",[1],4.4e7,"Pending Completion","2026-10-07","","Pending",0]]};
+const today=new Date("2026-10-10T12:00:00");
+function getDashRange(){const p=$("#dPeriod").value;let to=new Date(today),from=new Date(today);
+ if(p==="daily"){from=new Date(to);}else if(p==="weekly")from.setDate(to.getDate()-6);else if(p==="monthly")from=new Date(to.getFullYear(),to.getMonth(),1);else if(p==="quarterly")from=new Date(to.getFullYear(),Math.floor(to.getMonth()/3)*3,1);else if(p==="annual")from=new Date(to.getFullYear(),0,1);
+ else{from=$("#dFrom").value?new Date($("#dFrom").value):new Date(to.getFullYear(),0,1);to=$("#dTo").value?new Date($("#dTo").value+"T23:59:59"):to;}
+ from.setHours(0,0,0,0);return[from,to];}
+fillSelect($("#dAgent"),D.agents.map(a=>a[0]),"All agents",id=>D.agents.find(a=>a[0]===id)[1]);fillSelect($("#dType"),TYPES,"All types");fillSelect($("#dLoc"),LOCS,"All locations");
+fillSelect($("#dStat"),["Enquiry","Inspection","Offer Received","Negotiation","Reserved","Pending Completion","Completed","Cancelled","Disputed"],"All");
+function renderDash(){const[from,to]=getDashRange();const inR=d=>d&&new Date(d)>=from&&new Date(d)<=to;
+ const ag=$("#dAgent").value,ty=$("#dType").value,lo=$("#dLoc").value,tx=$("#dTx").value,st=$("#dStat").value;
+ $("#dashRange").textContent="Showing "+from.toLocaleDateString("en-GB")+" to "+to.toLocaleDateString("en-GB")+" (sample 'today' = 10 Oct 2026).";
+ const pr=id=>D.props.find(p=>p[0]===id);
+ const okP=p=>(ty==="all"||p[1]===ty)&&(lo==="all"||p[2]===lo);
+ const agIdx=ag==="all"?null:D.agents.findIndex(a=>a[0]===ag)+1;
+ const props=D.props.filter(p=>okP(p)&&(!agIdx||p[4]===agIdx));
+ const submitted=props.filter(p=>inR(p[5]));
+ const txs=D.txns.filter(t=>{const p=pr(t[1]);return okP(p)&&(!agIdx||t[3].includes(agIdx))&&(tx==="all"||t[2]===tx)&&(st==="all"||t[5]===st);});
+ const comp=txs.filter(t=>t[5]==="Completed"&&t[8]==="Verified"&&inR(t[7]));
+ const sales=comp.filter(t=>t[2]==="Sale"),rents=comp.filter(t=>t[2]==="Rental");
+ const sum=a=>a.reduce((s,t)=>s+t[4],0);
+ const comm=txs.filter(t=>inR(t[7])).reduce((s,t)=>s+t[9],0);
+ $("#kpis").innerHTML=[["Properties introduced (submission date)",submitted.length],["Verified / active",props.filter(p=>["Verified","Active Listing"].includes(p[3])).length],["Completed sales",sales.length],["Completed rentals",rents.length],["Completed transaction value",naira(sum(comp))],["Avg completed value",comp.length?naira(Math.round(sum(comp)/comp.length)):"-"],["Pending reviews",txs.filter(t=>t[8]==="Pending").length],["Demo commission (verified, in period)",naira(comm)]].map(k=>'<div class="kpi"><b>'+k[1]+'</b><span>'+k[0]+'</span></div>').join("");
+ const rows=D.agents.map((a,i)=>{if(ag!=="all"&&a[0]!==ag)return"";const n=i+1;const mp=D.props.filter(p=>p[4]===n&&okP(p));const mt=comp.filter(t=>t[3].includes(n));
+  return '<tr><td>'+esc(a[1])+'</td><td>'+mp.filter(p=>inR(p[5])).length+'</td><td>'+mp.filter(p=>["Verified","Active Listing"].includes(p[3])).length+'</td><td>'+mt.filter(t=>t[2]==="Sale").length+'</td><td>'+mt.filter(t=>t[2]==="Rental").length+'</td><td>'+naira(mt.reduce((s,t)=>s+t[4],0))+'</td></tr>';}).join("");
+ $("#agentTable").innerHTML='<thead><tr><th>Agent</th><th>Properties introduced</th><th>Verified/active</th><th>Sales</th><th>Rentals</th><th>Value (shared deals count for each agent)</th></tr></thead><tbody>'+rows+'</tbody>';
+ const inv={};D.props.filter(okP).forEach(p=>inv[p[3]]=(inv[p[3]]||0)+1);const mx=Math.max(1,...Object.values(inv));
+ $("#inv").innerHTML=Object.entries(inv).map(([k,v])=>'<div class="bar-row"><span>'+esc(k)+'</span><i style="width:'+(v/mx*100)+'%"></i><b>'+v+'</b></div>').join("");}
+$("#dashFilters").addEventListener("input",renderDash);$("#dashFilters").addEventListener("submit",e=>e.preventDefault());
+
+renderCats();renderFeatured();renderList();route();
+</script>
+</body>
+</html>
