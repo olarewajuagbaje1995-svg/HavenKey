@@ -83,24 +83,18 @@ footer{background:var(--forest);color:#cfc9b8;padding:2rem 0;font-size:.88rem}fo
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- =====================================================================
- CONFIGURATION — the ONLY place webhook URLs live.
- Paste the PRODUCTION webhook URLs from n8n (not the "test" URLs) after you activate the workflow.
- Example shape: https://YOUR-N8N-HOST/webhook/estateflow/v1/property-enquiry
- No API keys, Airtable tokens or Gmail credentials belong in this file.
- ===================================================================== -->
 <script>
 const HAVENKEY_CONFIG = {
   webhooks: {
-    enquiry:     "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_property-enquiry",
-    agent:       "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_agent-registration",
-    agreement:   "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_agent-agreement",
-    property:    "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_property-submission",
-    transaction: "PASTE_N8N_PRODUCTION_WEBHOOK_URL_FOR_transaction-submission"
+    enquiry:     "https://olarewajuagbaje-n8n-automation-hub.hf.space/webhook/estateflow/v1/property-enquiry",
+    agent:       "https://olarewajuagbaje-n8n-automation-hub.hf.space/webhook/estateflow/v1/agent-registration",
+    agreement:   "https://olarewajuagbaje-n8n-automation-hub.hf.space/webhook/estateflow/v1/agent-agreement",
+    property:    "https://olarewajuagbaje-n8n-automation-hub.hf.space/webhook/estateflow/v1/property-submission",
+    transaction: "https://olarewajuagbaje-n8n-automation-hub.hf.space/webhook/estateflow/v1/transaction-submission"
   },
-  agreementVersion: "DEMO-1.0",          // must equal CURRENT_VERSION in the n8n node "Validate Agreement"
+  agreementVersion: "DEMO-1.0",
   requestTimeoutMs: 25000,
-  alternativeContact: { email: "", phone: "" }   // shown on failure when filled in, e.g. the agency's real contact details
+  alternativeContact: { email: "", phone: "" }
 };
 </script>
 
@@ -267,7 +261,19 @@ const HAVENKEY_CONFIG = {
 <footer><div class="wrap"><p><b>HavenKey Abuja</b> — a fictional demonstration brand.</p><p>Demonstration website by Agbaje Automation. Property listings and enquiry data are illustrative.</p></div></footer>
 
 <script>
-const PROPS = [{"id": "HK-ABJ-001", "title": "Maitama Detached Residence with Garden", "tx": "Sale", "type": "Detached House", "loc": "Maitama", "desc": "Illustrative: five-bedroom detached house on a landscaped plot.", "price": 650000000, "period": "", "beds": 5, "baths": 6, "features": ["Boys quarters", "Backup power", "CCTV", "Garden"], "featured": true}, {"id": "HK-ABJ-002", "title": "Jabi Two-Bedroom Apartment near Jabi Lake", "tx": "Rent", "type": "Apartment", "loc": "Jabi", "desc": "Illustrative: two-bedroom apartment in a gated block.", "price": 6000000, "period": "Per Year", "beds": 2, "baths": 2, "features": ["Pre-paid meter", "Parking", "Borehole"], "featured": true}, {"id": "HK-ABJ-003", "title": "Gwarinpa Three-Bedroom Semi-Detached", "tx": "Rent", "type": "Semi-Detached House", "loc": "Gwarinpa", "desc": "Illustrative: three-bedroom semi-detached house in a quiet avenue.", "price": 3500000, "period": "Per Year", "beds": 3, "baths": 3, "features": ["Fitted kitchen", "Parking", "Water treatment"], "featured": false}, {"id": "HK-ABJ-004", "title": "Lokogoma 600sqm Residential Land", "tx": "Sale", "type": "Land", "loc": "Lokogoma", "desc": "Illustrative: residential plot, dry and accessible by tarred road.", "price": 45000000, "period": "", "beds": null, "baths": null, "features": ["600 sqm", "Accessible road", "Survey plan on request"], "featured": false}, {"id": "HK-ABJ-005", "title": "Wuse 2 Open-Plan Office Suite", "tx": "Rent", "type": "Commercial Property", "loc": "Wuse 2", "desc": "Illustrative: open-plan office suite with reception area.", "price": 18000000, "period": "Per Year", "beds": null, "baths": 2, "features": ["Lift access", "Standby generator", "Parking"], "featured": false}, {"id": "HK-ABJ-006", "title": "Guzape Four-Bedroom Terraced Duplex", "tx": "Sale", "type": "Terraced Duplex", "loc": "Guzape", "desc": "Illustrative: four-bedroom terraced duplex in a secured estate.", "price": 280000000, "period": "", "beds": 4, "baths": 5, "features": ["Estate security", "BQ", "Smart wiring"], "featured": true}, {"id": "HK-ABJ-007", "title": "Kubwa Three-Bedroom Semi-Detached", "tx": "Sale", "type": "Semi-Detached House", "loc": "Kubwa", "desc": "Illustrative: three-bedroom semi-detached house, newly painted.", "price": 65000000, "period": "", "beds": 3, "baths": 3, "features": ["Tiled floors", "Parking", "Fenced compound"], "featured": false}, {"id": "HK-ABJ-008", "title": "Wuse 2 Serviced Short-Let Studio", "tx": "Short-let", "type": "Short-let", "loc": "Wuse 2", "desc": "Illustrative: serviced studio apartment for short stays.", "price": 65000, "period": "Per Night", "beds": 1, "baths": 1, "features": ["Wi-Fi", "Air conditioning", "Housekeeping"], "featured": false}, {"id": "HK-ABJ-009", "title": "Lugbe Two-Bedroom Apartment", "tx": "Rent", "type": "Apartment", "loc": "Lugbe", "desc": "Illustrative: two-bedroom apartment close to the airport road.", "price": 1500000, "period": "Per Year", "beds": 2, "baths": 2, "features": ["Prepaid meter", "Parking", "Security"], "featured": false}, {"id": "HK-ABJ-010", "title": "Jabi Lakeside Three-Bedroom Apartment", "tx": "Sale", "type": "Apartment", "loc": "Jabi", "desc": "Illustrative: three-bedroom apartment in a lakeside development.", "price": 135000000, "period": "", "beds": 3, "baths": 3, "features": ["Lift", "Gym", "Power backup"], "featured": true}];
+const PROPS = [
+  {"id": "HK-ABJ-001", "title": "Maitama Detached Residence with Garden", "tx": "Sale", "type": "Detached House", "loc": "Maitama", "desc": "Illustrative: five-bedroom detached house on a landscaped plot.", "price": 650000000, "period": "", "beds": 5, "baths": 6, "features": ["Boys quarters", "Backup power", "CCTV", "Garden"], "featured": true, "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-002", "title": "Jabi Two-Bedroom Apartment near Jabi Lake", "tx": "Rent", "type": "Apartment", "loc": "Jabi", "desc": "Illustrative: two-bedroom apartment in a gated block.", "price": 6000000, "period": "Per Year", "beds": 2, "baths": 2, "features": ["Pre-paid meter", "Parking", "Borehole"], "featured": true, "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-003", "title": "Gwarinpa Three-Bedroom Semi-Detached", "tx": "Rent", "type": "Semi-Detached House", "loc": "Gwarinpa", "desc": "Illustrative: three-bedroom semi-detached house in a quiet avenue.", "price": 3500000, "period": "Per Year", "beds": 3, "baths": 3, "features": ["Fitted kitchen", "Parking", "Water treatment"], "featured": false, "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-004", "title": "Lokogoma 600sqm Residential Land", "tx": "Sale", "type": "Land", "loc": "Lokogoma", "desc": "Illustrative: residential plot, dry and accessible by tarred road.", "price": 45000000, "period": "", "beds": null, "baths": null, "features": ["600 sqm", "Accessible road", "Survey plan on request"], "featured": false, "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-005", "title": "Wuse 2 Open-Plan Office Suite", "tx": "Rent", "type": "Commercial Property", "loc": "Wuse 2", "desc": "Illustrative: open-plan office suite with reception area.", "price": 18000000, "period": "Per Year", "beds": null, "baths": 2, "features": ["Lift access", "Standby generator", "Parking"], "featured": false, "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-006", "title": "Guzape Four-Bedroom Terraced Duplex", "tx": "Sale", "type": "Terraced Duplex", "loc": "Guzape", "desc": "Illustrative: four-bedroom terraced duplex in a secured estate.", "price": 280000000, "period": "", "beds": 4, "baths": 5, "features": ["Estate security", "BQ", "Smart wiring"], "featured": true, "image": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-007", "title": "Kubwa Three-Bedroom Semi-Detached", "tx": "Sale", "type": "Semi-Detached House", "loc": "Kubwa", "desc": "Illustrative: three-bedroom semi-detached house, newly painted.", "price": 65000000, "period": "", "beds": 3, "baths": 3, "features": ["Tiled floors", "Parking", "Fenced compound"], "featured": false, "image": "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-008", "title": "Wuse 2 Serviced Short-Let Studio", "tx": "Short-let", "type": "Short-let", "loc": "Wuse 2", "desc": "Illustrative: serviced studio apartment for short stays.", "price": 65000, "period": "Per Night", "beds": 1, "baths": 1, "features": ["Wi-Fi", "Air conditioning", "Housekeeping"], "featured": false, "image": "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-009", "title": "Lugbe Two-Bedroom Apartment", "tx": "Rent", "type": "Apartment", "loc": "Lugbe", "desc": "Illustrative: two-bedroom apartment close to the airport road.", "price": 1500000, "period": "Per Year", "beds": 2, "baths": 2, "features": ["Prepaid meter", "Parking", "Security"], "featured": false, "image": "https://images.unsplash.com/photo-1502672260266-1c1de2d9dfd4?auto=format&fit=crop&w=800&q=80"},
+  {"id": "HK-ABJ-010", "title": "Jabi Lakeside Three-Bedroom Apartment", "tx": "Sale", "type": "Apartment", "loc": "Jabi", "desc": "Illustrative: three-bedroom apartment in a lakeside development.", "price": 135000000, "period": "", "beds": 3, "baths": 3, "features": ["Lift", "Gym", "Power backup"], "featured": true, "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"}
+];
+
 const AGREEMENT = [
  ["1. Parties to the agreement","[Company-approved wording to be inserted: identifies HavenKey Abuja (or the real company) and the agent.]"],
  ["2. Agent identification","[Placeholder: agent's name, Agent ID and contact details as registered.]"],
@@ -294,7 +300,7 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const naira=n=>"₦"+Number(n).toLocaleString("en-NG");
 
-/* ---------- placeholder artwork (original SVG; replace with licensed photos via PROPS[].image) ---------- */
+/* ---------- placeholder artwork (original SVG fallback if no image provided) ---------- */
 function art(p,v){const c=["#16402f","#0f2e24","#244f3b"][v%3];let s="";
  const t=p.type;
  if(t==="Land")s='<path d="M0 230 L120 170 L330 190 L400 160 V300 H0Z" fill="#c9b98e"/><path d="M60 250 L330 200" stroke="#fff" stroke-dasharray="8 6" stroke-width="3"/><circle cx="320" cy="70" r="30" fill="#e5c97f"/>';
@@ -303,7 +309,13 @@ function art(p,v){const c=["#16402f","#0f2e24","#244f3b"][v%3];let s="";
  else s='<polygon points="70,150 200,70 330,150" fill="#a8782f"/><rect x="90" y="150" width="220" height="110" fill="'+c+'"/><rect x="120" y="175" width="44" height="34" fill="#f1e4bd"/><rect x="236" y="175" width="44" height="34" fill="#f1e4bd"/><rect x="180" y="200" width="40" height="60" fill="#e5c97f"/>';
  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+(v%2?"#e8efe9":"#f3ead2")+'"/><stop offset="1" stop-color="#d7ccaa"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/>'+s+'<rect y="260" width="400" height="40" fill="#b9ad88" opacity=".55"/><text x="10" y="290" font-family="Arial" font-size="11" fill="#33413a">Illustrative placeholder image</text></svg>';
  return "data:image/svg+xml;utf8,"+encodeURIComponent(svg);}
-PROPS.forEach((p,i)=>{p.images=p.image?[p.image]:[art(p,i),art(p,i+1),art(p,i+2)];p.status="Illustrative demonstration listing";});
+
+// Load the high-quality images into the gallery array, duplicated so the side previews don't break
+PROPS.forEach((p,i)=>{
+  p.images = p.image ? [p.image, p.image, p.image] : [art(p,i), art(p,i+1), art(p,i+2)];
+  p.status = "Illustrative demonstration listing";
+});
+
 const txLabel={sale:"For sale",rent:"For rent",shortlet:"Short-let"};
 const txKey=p=>p.tx==="Sale"?"sale":(p.tx==="Rent"?"rent":"shortlet");
 const priceHtml=p=>'<span class="price">'+naira(p.price)+(p.period?' <small>'+esc(p.period.toLowerCase())+'</small>':'')+'</span>';
@@ -383,7 +395,7 @@ function submissionId(form){if(!attempts.has(form))attempts.set(form,uuid());ret
 /* Sends JSON to n8n. Resolves {ok:true,data} only for a confirmed success response; otherwise {ok:false,...}. */
 async function post(key,payload){
  const url=HAVENKEY_CONFIG.webhooks[key];
- if(!url||/PASTE_|YOUR-/.test(url))return{ok:false,kind:"config",message:"This form is not connected yet. The site owner must paste the production n8n webhook URL into HAVENKEY_CONFIG. Nothing was sent or saved."};
+ if(!url||/PASTE_|YOUR_N8N_DOMAIN/.test(url))return{ok:false,kind:"config",message:"This form is not connected yet. The site owner must paste the production n8n webhook URL into HAVENKEY_CONFIG. Nothing was sent or saved."};
  const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),HAVENKEY_CONFIG.requestTimeoutMs);
  try{
   const res=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),signal:ctl.signal});
